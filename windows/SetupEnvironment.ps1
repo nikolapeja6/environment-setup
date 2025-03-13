@@ -51,7 +51,7 @@ $tasks = @(
     }},
     @{ Name = "Windows Taskbar - hide search, task view, chat"; Action = {
         Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowTaskViewButton" -Value 0
-        # TODO: Hide search and chat
+        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" -Name "SearchBoxTaskbarMode" -Value 0 -Type DWord -Force
     }},
 
 
@@ -115,6 +115,9 @@ $tasks = @(
     }},
     @{ Name = "ProcMon"; Action = {
         winget install --id Microsoft.Sysinternals.ProcessMonitor -e --accept-package-agreements --accept-source-agreements
+    }},
+    @{ Name = "GitHub Desktop"; Action = {
+        winget install --id GitHub.GitHubDesktop -e --accept-package-agreements --accept-source-agreements
     }}
 )
 
