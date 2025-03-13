@@ -53,6 +53,14 @@ $tasks = @(
         Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowTaskViewButton" -Value 0
         Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" -Name "SearchBoxTaskbarMode" -Value 0 -Type DWord -Force
     }},
+    @{ Name = "Date & time format"; Action = {
+        Set-TimeZone -Id "Central Europe Standard Time"
+        Set-ItemProperty -Path "HKCU:\Control Panel\International" -Name "iFirstDayOfWeek" -Value 0
+        Set-ItemProperty -Path "HKCU:\Control Panel\International" -Name "sShortDate" -Value "dd-MMM-yy"
+        Set-ItemProperty -Path "HKCU:\Control Panel\International" -Name "sLongDate" -Value "dd MMMM, yyyy"
+        Set-ItemProperty -Path "HKCU:\Control Panel\International" -Name "sShortTime" -Value "HH:mm"
+        Set-ItemProperty -Path "HKCU:\Control Panel\International" -Name "sTimeFormat" -Value "HH:mm:ss"
+    }},
 
 
     ####################
@@ -119,6 +127,10 @@ $tasks = @(
     @{ Name = "GitHub Desktop"; Action = {
         winget install --id GitHub.GitHubDesktop -e --accept-package-agreements --accept-source-agreements
     }}
+    @{ Name = "Windows App"; Action = {
+        winget install --id Microsoft.WindowsApp -e --accept-package-agreements --accept-source-agreements
+    }},
+    
 )
 
 $totalTasks = $tasks.Count
