@@ -129,7 +129,7 @@ $tasks = @(
     }}
     @{ Name = "Windows App"; Action = {
         winget install --id Microsoft.WindowsApp -e --accept-package-agreements --accept-source-agreements
-    }},
+    }}
     
 )
 
